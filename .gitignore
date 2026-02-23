@@ -3,3 +3,9 @@
 
 # 이름이 saved로 시작하는 모든 파일/폴더
 saved*
+
+# 중요 정보
+KIS_key.json
+
+# data
+realtime_data
