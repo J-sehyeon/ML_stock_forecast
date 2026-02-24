@@ -16,6 +16,9 @@ ka.auth()
 ka.auth_ws()
 trenv = ka.getTREnv()
 
+# 구독 데이터
+DATA = ["005930", "000660"]
+
 # 웹소켓 선언
 kws = ka.KISWebSocket(api_url="/tryitout")
 
@@ -23,7 +26,7 @@ kws = ka.KISWebSocket(api_url="/tryitout")
 # [국내주식] 실시간시세 > 국내주식 실시간호가 (KRX) [실시간-004]
 ##############################################################################################
 
-kws.subscribe(request=asking_price_krx, data=["005930", "000660"])
+kws.subscribe(request=asking_price_krx, data=DATA)
 
 ##############################################################################################
 # [국내주식] 실시간시세 > 국내주식 실시간호가 (NXT)
@@ -41,7 +44,7 @@ kws.subscribe(request=asking_price_krx, data=["005930", "000660"])
 # [국내주식] 실시간시세 > 국내주식 실시간체결가(KRX) [실시간-003]
 ##############################################################################################
 
-kws.subscribe(request=ccnl_krx, data=["005930", "000660"])
+kws.subscribe(request=ccnl_krx, data=DATA)
 
 ##############################################################################################
 # [국내주식] 실시간시세 > 국내주식 주식체결통보 [실시간-005]
@@ -191,23 +194,23 @@ current_minute = defaultdict(lambda: None)
 OVERFLOW_THRESHOLD = 1000
 
 ### overflow 제거, code 추가
-def flush_to_parquet(tr_id, code, minute_key):
+def flush_to_parquet(key, minute_key):
 
-    if len(buffers[tr_id]) == 0:
+    if len(buffers[key]) == 0:
         return
 
-    df = pd.concat(buffers[tr_id], ignore_index=True)
+    df = pd.concat(buffers[key], ignore_index=True)
     
 
     file_path = os.path.join(
         SAVE_DIR,
-        code,
-        tr_id,
+        key[0],
+        key[1],
         f"{minute_key}.parquet"
     )
 
     # append 방식으로 저장
-    if os.path.exists(file_path):
+    if os.path.exists(file_path):       # ram 용량 임계점에 도달해서 분 변경x, 저장하려 할 때
         df.to_parquet(
             file_path,
             engine="pyarrow",
@@ -221,14 +224,14 @@ def flush_to_parquet(tr_id, code, minute_key):
             compression="snappy"
         )
 
-    buffers[tr_id].clear()
+    buffers[key].clear()
 
 
 def on_result(ws, tr_id, code, result, data_info):
     if result.empty:
         return
 
-    key = tr_id + code
+    key = (code, tr_id)
 
     now = datetime.now()
     minute_key = now.strftime("%Y%m%d_%H%M")
@@ -242,17 +245,17 @@ def on_result(ws, tr_id, code, result, data_info):
     result["recv_timestamp"] = now.strftime("%H:%M:%S")
 
     result.insert(0, "recv_timestamp", result.pop("recv_timestamp"))    # 위치 이동
-
+    #### 1데이터마다 한번 on_result 호출
     # 초기 minute 설정
     if current_minute[key] is None:
         current_minute[key] = minute_key
     # a분 에서 a+1분이 되면 새로운 디렉토리에 저장
     # 그게 아니라 용량이 임계점에 다다르면 기존 파일에 저장 후 시간은 새로고침 x
+
     # 1️⃣ minute 변경 시 flush (정상 저장)
     if minute_key != current_minute[key]:
         flush_to_parquet(
-            tr_id,
-            code,
+            key,
             current_minute[key],
         )
         current_minute[key] = minute_key
@@ -263,12 +266,9 @@ def on_result(ws, tr_id, code, result, data_info):
     # 2️⃣ 용량 초과 시 즉시 flush (메모리 보호)
     if len(buffers[key]) >= OVERFLOW_THRESHOLD:
         flush_to_parquet(
-            tr_id,
-            code,
-            minute_key,
-            overflow_flag=1
+            key,
+            minute_key
         )
-
 
 
 kws.start(on_result=on_result)

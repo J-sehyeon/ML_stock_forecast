@@ -667,26 +667,31 @@ class KISWebSocket:
             logging.info("received message >> %s" % raw)
             show_result = False
 
-            df = pd.DataFrame()
+            dfs = pd.DataFrame()
 
             if raw[0] in ["0", "1"]:
                 d1 = raw.split("|")
                 if len(d1) < 4:
                     raise ValueError("data not found...")
 
-                tr_id = d1[1]
+                tr_id, num_data= d1[1:3]
+                payloads = d1[3:]
                 
                 dm = data_map[tr_id]
-                d = d1[3]
+                codes = []
+                rows = []
+                    
+                for p in payloads[:int(num_data)]:
+                    if dm.get("encrypt") == "Y":
+                        p = aes_cbc_base64_dec(dm["key"], dm["iv"], p)
 
-                code = d[:6]        # 종목 코드 저장
+                    fields = p.split("^")
 
-                if dm.get("encrypt", None) == "Y":
-                    d = aes_cbc_base64_dec(dm["key"], dm["iv"], d)
+                    code = fields[0]          # 종목코드
+                    codes.append(code)
+                    rows.append(fields)
 
-                df = pd.read_csv(
-                    StringIO(d), header=None, sep="^", names=dm["columns"], dtype=object
-                )
+                dfs = pd.DataFrame(rows, columns=dm["columns"])
 
                 show_result = True
 
@@ -707,7 +712,9 @@ class KISWebSocket:
                     show_result = True
 
             if show_result is True and self.on_result is not None:
-                self.on_result(ws, tr_id, code, df, data_map[tr_id])
+                for i, code in enumerate(codes):
+                    df = dfs.iloc[[i]]          # 1-row dataframe
+                    self.on_result(ws, tr_id, code, df, data_map[tr_id])
 
     async def __runner(self):
         if len(open_map.keys()) > 40:
