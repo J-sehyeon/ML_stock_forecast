@@ -61,20 +61,21 @@ def asking_price_krx(
     # 데이터 구독 요청
     msg = ka.data_fetch(tr_id, tr_type, params)
 
+
     # 응답 데이터 컬럼 정보
     columns = [
-        "MKSC_SHRN_ISCD", "BSOP_HOUR", "HOUR_CLS_CODE",
-        "ASKP1", "ASKP2", "ASKP3", "ASKP4", "ASKP5",
-        "ASKP6", "ASKP7", "ASKP8", "ASKP9", "ASKP10",
+        "MKSC_SHRN_ISCD", "BSOP_HOUR", "HOUR_CLS_CODE", # 2
+        "ASKP1", "ASKP2", "ASKP3", "ASKP4", "ASKP5", 
+        "ASKP6", "ASKP7", "ASKP8", "ASKP9", "ASKP10", # 12
         "BIDP1", "BIDP2", "BIDP3", "BIDP4", "BIDP5",
-        "BIDP6", "BIDP7", "BIDP8", "BIDP9", "BIDP10",
+        "BIDP6", "BIDP7", "BIDP8", "BIDP9", "BIDP10", # 22
         "ASKP_RSQN1", "ASKP_RSQN2", "ASKP_RSQN3", "ASKP_RSQN4", "ASKP_RSQN5",
         "ASKP_RSQN6", "ASKP_RSQN7", "ASKP_RSQN8", "ASKP_RSQN9", "ASKP_RSQN10",
         "BIDP_RSQN1", "BIDP_RSQN2", "BIDP_RSQN3", "BIDP_RSQN4", "BIDP_RSQN5",
-        "BIDP_RSQN6", "BIDP_RSQN7", "BIDP_RSQN8", "BIDP_RSQN9", "BIDP_RSQN10",
-        "TOTAL_ASKP_RSQN", "TOTAL_BIDP_RSQN", "OVTM_TOTAL_ASKP_RSQN", "OVTM_TOTAL_BIDP_RSQN",
-        "ANTC_CNPR", "ANTC_CNQN", "ANTC_VOL", "ANTC_CNTG_VRSS", "ANTC_CNTG_VRSS_SIGN",
-        "ANTC_CNTG_PRDY_CTRT", "ACML_VOL",
+        "BIDP_RSQN6", "BIDP_RSQN7", "BIDP_RSQN8", "BIDP_RSQN9", "BIDP_RSQN10", # 42
+        "TOTAL_ASKP_RSQN", "TOTAL_BIDP_RSQN", "OVTM_TOTAL_ASKP_RSQN", "OVTM_TOTAL_BIDP_RSQN", # 46
+        "ANTC_CNPR", "ANTC_CNQN", "ANTC_VOL", "ANTC_CNTG_VRSS", "ANTC_CNTG_VRSS_SIGN", # 51
+        "ANTC_CNTG_PRDY_CTRT", "ACML_VOL", # 53
         "dummy1", "dummmy2", "dummy3", "dummy4", "dummy5", "dummy6", "dummy7", "dummy8"
         ] 
         # "TOTAL_ASKP_RSQN_ICDC", "TOTAL_BIDP_RSQN_ICDC",
@@ -367,19 +368,19 @@ def ccnl_krx(
     msg = ka.data_fetch(tr_id, tr_type, params)
 
     # 응답 데이터 컬럼 정보
-    columns = [
+    columns = [ # 아래 전부가 우리가 가져올 수 있는 칼럼들이고 이들 중에서 일부 추출한 인덱스가
         "MKSC_SHRN_ISCD", "STCK_CNTG_HOUR", "STCK_PRPR", "PRDY_VRSS_SIGN",
-        "PRDY_VRSS", "PRDY_CTRT", "WGHN_AVRG_STCK_PRC", "STCK_OPRC",
-        "STCK_HGPR", "STCK_LWPR", "ASKP1", "BIDP1", "CNTG_VOL", "ACML_VOL",
-        "ACML_TR_PBMN", "SELN_CNTG_CSNU", "SHNU_CNTG_CSNU", "NTBY_CNTG_CSNU",
-        "CTTR", "SELN_CNTG_SMTN", "SHNU_CNTG_SMTN", "CCLD_DVSN", "SHNU_RATE",
-        "PRDY_VOL_VRSS_ACML_VOL_RATE", "OPRC_HOUR", "OPRC_VRSS_PRPR_SIGN",
-        "OPRC_VRSS_PRPR", "HGPR_HOUR", "HGPR_VRSS_PRPR_SIGN", "HGPR_VRSS_PRPR",
-        "LWPR_HOUR", "LWPR_VRSS_PRPR_SIGN", "LWPR_VRSS_PRPR", "BSOP_DATE",
-        "NEW_MKOP_CLS_CODE", "TRHT_YN", "ASKP_RSQN1", "BIDP_RSQN1",
-        "TOTAL_ASKP_RSQN", "TOTAL_BIDP_RSQN", "VOL_TNRT",
-        "PRDY_SMNS_HOUR_ACML_VOL", "PRDY_SMNS_HOUR_ACML_VOL_RATE",
-        "HOUR_CLS_CODE", "MRKT_TRTM_CLS_CODE", "VI_STND_PRC"
+        "PRDY_VRSS", "PRDY_CTRT", "WGHN_AVRG_STCK_PRC", "STCK_OPRC", # 7       # STCK_OPRC, HGPT, LWPR: 분당 1개 데이터, 1번만 수집
+        "STCK_HGPR", "STCK_LWPR", "ASKP1", "BIDP1", "CNTG_VOL", "ACML_VOL", # 13
+        "ACML_TR_PBMN", "SELN_CNTG_CSNU", "SHNU_CNTG_CSNU", "NTBY_CNTG_CSNU", # 17
+        "CTTR", "SELN_CNTG_SMTN", "SHNU_CNTG_SMTN", "CCLD_DVSN", "SHNU_RATE", # 22
+        "PRDY_VOL_VRSS_ACML_VOL_RATE", "OPRC_HOUR", "OPRC_VRSS_PRPR_SIGN", # 25
+        "OPRC_VRSS_PRPR", "HGPR_HOUR", "HGPR_VRSS_PRPR_SIGN", "HGPR_VRSS_PRPR", # 29
+        "LWPR_HOUR", "LWPR_VRSS_PRPR_SIGN", "LWPR_VRSS_PRPR", "BSOP_DATE", # 33
+        "NEW_MKOP_CLS_CODE", "TRHT_YN", "ASKP_RSQN1", "BIDP_RSQN1", # 37
+        "TOTAL_ASKP_RSQN", "TOTAL_BIDP_RSQN", "VOL_TNRT", # 40
+        "PRDY_SMNS_HOUR_ACML_VOL", "PRDY_SMNS_HOUR_ACML_VOL_RATE", # 42 / 전날 거래량, 거래 비율 관계 학습
+        "HOUR_CLS_CODE", "MRKT_TRTM_CLS_CODE", "VI_STND_PRC" 
     ]
 
     return msg, columns

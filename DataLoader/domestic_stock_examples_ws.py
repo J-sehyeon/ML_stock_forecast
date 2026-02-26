@@ -194,7 +194,7 @@ current_minute = defaultdict(lambda: None)
 OVERFLOW_THRESHOLD = 1000
 
 ### overflow 제거, code 추가
-def flush_to_parquet(key, minute_key):
+def flush_to_parquet(key, minute_key, buffer_m=None):
 
     if len(buffers[key]) == 0:
         return
@@ -220,54 +220,71 @@ def flush_to_parquet(key, minute_key):
     else:
         df.to_parquet(
             file_path,
+            engine="pyarrow",       # 아래 터미널에 뜨는게 실시간으로 데이터 들어오는 모습
+            compression="snappy"
+        )
+    if buffer_m is not None:
+        file_path = os.path.join(
+            SAVE_DIR,
+            key[0],
+            key[1],
+            f"{minute_key}_snapshot.parquet"
+        ) 
+        buffer_m.to_parquet(
+            file_path,
             engine="pyarrow",
             compression="snappy"
         )
-
     buffers[key].clear()
 
 
-def on_result(ws, tr_id, code, result, data_info):
+def on_result(ws, tr_id, code, result, data_info):      # 시간에 따라 저장 데이터가 다르므로 데이터 저장 분기를 여기서 작성
     if result.empty:
         return
 
     key = (code, tr_id)
 
-    now = datetime.now()
-    minute_key = now.strftime("%Y%m%d_%H%M")
+    minute_key = datetime.now().strftime("%Y%m%d_%H%M")
 
 
     # 숫자형 변환
-    for col in result.columns:
+    for col in result.columns[1:]:
         result[col] = pd.to_numeric(result[col], errors="ignore")
+    if tr_id == "H0STCNT0": # 이거는 지금 데이터가 호가 데이터인지, 실시간 체결 데이터인지 구분
+        col_s = result.columns[[0, 1, 2, 12, 13, 14, 18, 21]]   # 실시간 정보를 모두 저장할 인덱스
+        col_m = result.columns[[4, 5, 7, 8, 9, 15, 16, 19, 20, 23, 42, 45]] # 1분 단위로 딱 한 번만 저장할 인덱스
+    else:
+        col_s = result.columns[0:45]
+        col_m = result.columns[[53]]
 
-    # timestamp 추가
-    result["recv_timestamp"] = now.strftime("%H:%M:%S")
 
-    result.insert(0, "recv_timestamp", result.pop("recv_timestamp"))    # 위치 이동
     #### 1데이터마다 한번 on_result 호출
     # 초기 minute 설정
     if current_minute[key] is None:
         current_minute[key] = minute_key
     # a분 에서 a+1분이 되면 새로운 디렉토리에 저장
     # 그게 아니라 용량이 임계점에 다다르면 기존 파일에 저장 후 시간은 새로고침 x
+    
+    ######### 여기서 한 번만 수집하는 데이터 저장
 
     # 1️⃣ minute 변경 시 flush (정상 저장)
     if minute_key != current_minute[key]:
-        flush_to_parquet(
+        buffer_m = result[col_m]
+        flush_to_parquet(       # 이게 db에 저장하는 함수, 위에 정의돼있음
             key,
             current_minute[key],
+            buffer_m = buffer_m
         )
         current_minute[key] = minute_key
 
     # 버퍼 추가
-    buffers[key].append(result)
+    buffers[key].append(result[col_s])      # 버퍼는 db 저장 전 임시 저장공간
 
     # 2️⃣ 용량 초과 시 즉시 flush (메모리 보호)
     if len(buffers[key]) >= OVERFLOW_THRESHOLD:
         flush_to_parquet(
             key,
-            minute_key
+            minute_key,
         )
 
 

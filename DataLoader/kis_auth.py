@@ -675,23 +675,24 @@ class KISWebSocket:
                     raise ValueError("data not found...")
 
                 tr_id, num_data= d1[1:3]
-                payloads = d1[3:]
-                
+                d = d1[3]
+
                 dm = data_map[tr_id]
+                if dm.get("encrypt", None) == "Y":
+                    d = aes_cbc_base64_dec(dm["key"], dm["iv"], d)
+                
+                l = len(dm["columns"])
+
                 codes = []
                 rows = []
-                    
-                for p in payloads[:int(num_data)]:
-                    if dm.get("encrypt") == "Y":
-                        p = aes_cbc_base64_dec(dm["key"], dm["iv"], p)
 
-                    fields = p.split("^")
+                payloads = d.split("^")
+                for i in range(int(num_data)):
+                    p = payloads[i * l : (i+1) * l]
+                    codes.append(p[0])
+                    rows.append(p)
 
-                    code = fields[0]          # 종목코드
-                    codes.append(code)
-                    rows.append(fields)
-
-                dfs = pd.DataFrame(rows, columns=dm["columns"])
+                dfs = pd.DataFrame(rows, columns=dm["columns"])     # 이 방식엔 성능 면에서의 개선 사항 존재
 
                 show_result = True
 
