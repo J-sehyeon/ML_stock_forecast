@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 # 인증
 ka.auth()
 ka.auth_ws()
-trenv = ka.getTREnv()
+trenv = ka.getTREnv()   
 
 # 구독 데이터
 DATA = ["005930", "000660"]
