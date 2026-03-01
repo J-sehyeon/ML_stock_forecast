@@ -10,4 +10,4 @@ response = agent.responses.create(
     input="사용가능한 openai의 모델 종류"        
 )
 
-print(response)
+print(response.output_text)

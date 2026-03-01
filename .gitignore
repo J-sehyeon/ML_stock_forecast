@@ -9,3 +9,5 @@ KIS_key.json
 
 # data
 realtime_data
+/test/rag/*.kv
+/test/rag/*.npy
