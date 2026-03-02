@@ -668,6 +668,7 @@ class KISWebSocket:
             show_result = False
 
             dfs = pd.DataFrame()
+            overseas = False
 
             if raw[0] in ["0", "1"]:
                 d1 = raw.split("|")
@@ -675,6 +676,9 @@ class KISWebSocket:
                     raise ValueError("data not found...")
 
                 tr_id, num_data= d1[1:3]
+                if "HD" in tr_id:
+                    overseas = True
+                
                 d = d1[3]
 
                 dm = data_map[tr_id]
@@ -687,9 +691,13 @@ class KISWebSocket:
                 rows = []
 
                 payloads = d.split("^")
+                
                 for i in range(int(num_data)):
                     p = payloads[i * l : (i+1) * l]
-                    codes.append(p[0])
+                    if overseas:
+                        codes.append(p[0][4:])
+                    else:
+                        codes.append(p[0])
                     rows.append(p)
 
                 dfs = pd.DataFrame(rows, columns=dm["columns"])     # 이 방식엔 성능 면에서의 개선 사항 존재
