@@ -122,8 +122,8 @@ def on_result(ws, tr_id, code, result, data_info):      # 시간에 따라 저�
     for col in result.columns[1:]:
         result[col] = pd.to_numeric(result[col], errors="coerce")
     if tr_id == "HDFSCNT0":             # 해외_실시간지연 체결가
-        col_s = result.columns[[1, 6, 7, 11, 19, 20, 21, 22, 23, 24]]
-        col_m = result.columns[[8, 9, 10, 13, 14]]
+        col_s = result.columns[[0, 5, 6, 10, 18, 19, 20, 21, 22, 23]]
+        col_m = result.columns[[7, 8, 9, 12, 13]]
     else:                               # 해외_실시간 호가  / HDFSASP0
         col_s = result.columns[[1, 5, 6]].tolist() + result.columns[11:].tolist()
         col_m = result.columns[[7, 8, 9, 10]]

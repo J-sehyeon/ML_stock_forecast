@@ -4,4 +4,3 @@ tavily_client = TavilyClient(api_key="tvly-dev-2htajA-RhkMO8YhhgmPFGbDhySHtGABwC
 response = tavily_client.search("엔비디아의 최근 소식")
 
 print(response)
-

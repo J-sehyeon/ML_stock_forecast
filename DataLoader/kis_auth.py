@@ -664,11 +664,10 @@ class KISWebSocket:
     # private
     async def __subscriber(self, ws: websockets.ClientConnection):
         async for raw in ws:
-            logging.info("received message >> %s" % raw)    # 종목 코드, 실체 or 호가
+            # logging.info("received message >> %s" % raw)    # 종목 코드, 실체 or 호가
             show_result = False
 
             dfs = pd.DataFrame()
-            overseas = False
 
             if raw[0] in ["0", "1"]:
                 d1 = raw.split("|")
@@ -676,9 +675,6 @@ class KISWebSocket:
                     raise ValueError("data not found...")
 
                 tr_id, num_data= d1[1:3]
-                if "HD" in tr_id:
-                    overseas = True
-                
                 d = d1[3]
 
                 dm = data_map[tr_id]
@@ -691,13 +687,9 @@ class KISWebSocket:
                 rows = []
 
                 payloads = d.split("^")
-                
                 for i in range(int(num_data)):
                     p = payloads[i * l : (i+1) * l]
-                    if overseas:
-                        codes.append(p[0][4:])
-                    else:
-                        codes.append(p[0])
+                    codes.append(p[0])
                     rows.append(p)
 
                 dfs = pd.DataFrame(rows, columns=dm["columns"])     # 이 방식엔 성능 면에서의 개선 사항 존재
@@ -721,9 +713,12 @@ class KISWebSocket:
                     show_result = True
 
             if show_result is True and self.on_result is not None:
-                for i, code in enumerate(codes):
-                    df = dfs.iloc[[i]]          # 1-row dataframe
-                    self.on_result(ws, tr_id, code, df, data_map[tr_id])
+                try:
+                    for i, code in enumerate(codes):
+                        df = dfs.iloc[[i]]          # 1-row dataframe
+                        self.on_result(ws, tr_id, code, df, data_map[tr_id])
+                except Exception as e:
+                    print(e)
 
     async def __runner(self):
         if len(open_map.keys()) > 40:
@@ -737,7 +732,7 @@ class KISWebSocket:
                     # request subscribe
                     for name, obj in open_map.items():
                         await self.send_multiple(
-                            ws, obj["func"], "1", obj["items"], obj["kwargs"]
+                            ws, obj["func"], "1", obj["items"], obj["kwargs"]   
                         )
 
                     # subscriber
