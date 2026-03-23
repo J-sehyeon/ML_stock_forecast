@@ -1,0 +1,67 @@
+[project]
+name = "stock-ai"
+version = "0.1.0"
+requires-python = ">=3.12"
+
+dependencies = [
+# ===== Core =====
+"numpy==2.2.6",
+"pandas==2.3.3",
+"scipy==1.15.3",
+"matplotlib==3.10.8",
+
+```
+# ===== ML / DL =====
+"torch==2.10.0",
+"torchvision==0.25.0",
+"torchaudio==2.10.0",
+
+# ===== LangChain Ecosystem =====
+"langchain==1.2.10",
+"langchain-core==1.2.20",
+"langchain-community==0.4.1",
+"langchain-openai==1.1.9",
+"langchain-tavily==0.2.17",
+"langchain-text-splitters==1.1.1",
+
+# ===== LangGraph =====
+"langgraph==1.0.8",
+"langgraph-checkpoint==4.0.0",
+"langgraph-prebuilt==1.0.7",
+"langgraph-sdk==0.3.6",
+
+# ===== Observability =====
+"langsmith==0.7.3",
+
+# ===== LLM / API =====
+"openai==2.21.0",
+"tiktoken==0.12.0",
+
+# ===== Async / Networking =====
+"aiohttp==3.13.3",
+"httpx==0.28.1",
+"websockets==16.0",
+
+# ===== Data / Storage =====
+"pyarrow==23.0.1",
+"sqlalchemy==2.0.48",
+
+# ===== Graph / DB =====
+"neo4j==6.1.0",
+"networkx==3.4.2",
+
+# ===== Utils =====
+"pydantic==2.12.5",
+"python-dotenv==1.2.2",
+"tqdm==4.67.3",
+"yfinance==1.2.0",
+
+# ===== NLP / Embedding =====
+"gensim==4.4.0",
+
+# ===== Parsing =====
+"beautifulsoup4==4.14.3",
+"pypdf==6.8.0"
+```
+
+]
