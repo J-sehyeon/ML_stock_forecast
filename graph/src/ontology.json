@@ -1,0 +1,34 @@
+{
+    "node": {
+        "company": {
+            "class1": {
+                "identifying": ["country", "ticker"],
+
+                "properties": {
+                    "country": "string",
+                    "ticker": "string",
+                    "financial statements": []
+                }
+            },
+            "class2": {
+                "identifying": ["country", "ticker"],
+
+                "properties": {
+                    "country": "string",
+                    "ticker": "string",
+                    "financial score": "number"
+                }
+
+            },
+            "class3": {
+                "identifying": ["country", "ticker"],
+
+                "properties": {
+                    "country": "string",
+                    "ticker": "string",
+                    "financial score": "number"
+                }
+            }
+        }
+    }
+}
