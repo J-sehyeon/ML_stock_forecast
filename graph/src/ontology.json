@@ -2,8 +2,10 @@
     "node": {
         "company": {
             "class1": {
-                "identifying": ["country", "ticker"],
-
+                "identifying": {
+                    "id": ["country", "ticker"],
+                    "description": "unique value"
+                },
                 "properties": {
                     "country": "string",
                     "ticker": "string",

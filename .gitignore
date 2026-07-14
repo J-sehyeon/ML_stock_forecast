@@ -5,9 +5,17 @@
 saved*
 
 # 중요 정보
-KIS_key.json
+.env
 
 # data
 realtime_data
 /test/rag/*.kv
 /test/rag/*.npy
+
+# env
+.venv
+uv.lock
+
+# etc
+*/__pycache__
+Obsidian

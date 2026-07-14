@@ -1,0 +1,1002 @@
+{
+  "metadata": {
+    "created_at": "2026-06-28T04:52:15.311169+00:00",
+    "model": "rule-based-baseline-v2",
+    "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+    "validation_passed": true
+  },
+  "article": {
+    "article_id": "article:3a8a943b5b939909",
+    "headline": "삼성전자, 서울에서 차세대 AI 반도체 발표",
+    "source_url": "https://example.com/news/samsung-ai-chip",
+    "published_at": "2026-06-20T09:00:00+09:00",
+    "text": "2026년 6월 20일 서울에서 삼성전자는 차세대 AI 반도체 Exynos AI를 발표했다. Exynos AI는 모바일 AI 반도체 제품으로 소개됐다. 삼성전자의 시가총액은 430조 원이며 SK하이닉스의 시가총액은 190조 원이다. 삼성전자는 2026년 AI 반도체 매출 목표를 25조 원으로 제시했다. 삼성전자는 서울 서초구에 본사를 두고 있다. 삼성전자는 SK하이닉스와 메모리 공급망 협력을 확대한다고 밝혔다. 발표 이후 삼성전자 주가는 3.2% 상승했고, 시장 분석가 김민수는 삼성전자의 수요 회복을 언급했다.",
+    "checksum": "3a8a943b5b939909"
+  },
+  "nodes": [
+    {
+      "id": "article:3a8a943b5b939909",
+      "labels": [
+        "NewsArticle"
+      ],
+      "properties": {
+        "id": "article:3a8a943b5b939909",
+        "headline": "삼성전자, 서울에서 차세대 AI 반도체 발표",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "published_at": "2026-06-20T09:00:00+09:00",
+        "checksum": "3a8a943b5b939909",
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "mentioned_date": "2026년 6월 20일"
+      }
+    },
+    {
+      "id": "place:seoul",
+      "labels": [
+        "Place"
+      ],
+      "properties": {
+        "id": "place:seoul",
+        "name": "서울",
+        "entity_type": "Place"
+      }
+    },
+    {
+      "id": "org:samsung-electronics",
+      "labels": [
+        "Organization"
+      ],
+      "properties": {
+        "id": "org:samsung-electronics",
+        "name": "삼성전자",
+        "entity_type": "Organization",
+        "market_cap_trillion_krw": 430.0,
+        "revenue_target_trillion_krw": 25.0,
+        "stock_change_percent": 3.2
+      }
+    },
+    {
+      "id": "product:exynos-ai",
+      "labels": [
+        "Product"
+      ],
+      "properties": {
+        "id": "product:exynos-ai",
+        "name": "Exynos AI",
+        "entity_type": "Product",
+        "product_category": "AI semiconductor"
+      }
+    },
+    {
+      "id": "org:sk-hynix",
+      "labels": [
+        "Organization"
+      ],
+      "properties": {
+        "id": "org:sk-hynix",
+        "name": "SK하이닉스",
+        "entity_type": "Organization",
+        "market_cap_trillion_krw": 190.0
+      }
+    },
+    {
+      "id": "person:kim-minsu",
+      "labels": [
+        "Person"
+      ],
+      "properties": {
+        "id": "person:kim-minsu",
+        "name": "김민수",
+        "entity_type": "Person",
+        "role": "market_analyst"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "place:seoul",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "서울",
+        "start_char": 13,
+        "end_char": 15,
+        "chunk_id": "chunk:001",
+        "evidence_text": "2026년 6월 20일 서울에서 삼성전자는 차세대 AI 반도체 Exynos AI를 발표했다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:76611f96aea566da"
+      },
+      "id": "rel:76611f96aea566da"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "org:samsung-electronics",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "삼성전자",
+        "start_char": 18,
+        "end_char": 22,
+        "chunk_id": "chunk:001",
+        "evidence_text": "2026년 6월 20일 서울에서 삼성전자는 차세대 AI 반도체 Exynos AI를 발표했다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:b3b9b7460327c0d8"
+      },
+      "id": "rel:b3b9b7460327c0d8"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "product:exynos-ai",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "차세대 AI 반도체",
+        "start_char": 24,
+        "end_char": 34,
+        "chunk_id": "chunk:001",
+        "evidence_text": "2026년 6월 20일 서울에서 삼성전자는 차세대 AI 반도체 Exynos AI를 발표했다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:4fdf6fbb2b7ecba4"
+      },
+      "id": "rel:4fdf6fbb2b7ecba4"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "product:exynos-ai",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "Exynos AI",
+        "start_char": 35,
+        "end_char": 44,
+        "chunk_id": "chunk:001",
+        "evidence_text": "2026년 6월 20일 서울에서 삼성전자는 차세대 AI 반도체 Exynos AI를 발표했다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:4fdf6fbb2b7ecba4"
+      },
+      "id": "rel:4fdf6fbb2b7ecba4"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "product:exynos-ai",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "Exynos AI",
+        "start_char": 51,
+        "end_char": 60,
+        "chunk_id": "chunk:002",
+        "evidence_text": "Exynos AI는 모바일 AI 반도체 제품으로 소개됐다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:466b6aea5f5c6927"
+      },
+      "id": "rel:466b6aea5f5c6927"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "org:samsung-electronics",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "삼성전자",
+        "start_char": 84,
+        "end_char": 88,
+        "chunk_id": "chunk:003",
+        "evidence_text": "삼성전자의 시가총액은 430조 원이며 SK하이닉스의 시가총액은 190조 원이다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:1e18f8f231200920"
+      },
+      "id": "rel:1e18f8f231200920"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "org:sk-hynix",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "SK하이닉스",
+        "start_char": 105,
+        "end_char": 111,
+        "chunk_id": "chunk:003",
+        "evidence_text": "삼성전자의 시가총액은 430조 원이며 SK하이닉스의 시가총액은 190조 원이다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:3cbf6a8e3cab22a7"
+      },
+      "id": "rel:3cbf6a8e3cab22a7"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "org:samsung-electronics",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "삼성전자",
+        "start_char": 129,
+        "end_char": 133,
+        "chunk_id": "chunk:004",
+        "evidence_text": "삼성전자는 2026년 AI 반도체 매출 목표를 25조 원으로 제시했다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:ea8f95c5f9554b1d"
+      },
+      "id": "rel:ea8f95c5f9554b1d"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "org:samsung-electronics",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "삼성전자",
+        "start_char": 169,
+        "end_char": 173,
+        "chunk_id": "chunk:005",
+        "evidence_text": "삼성전자는 서울 서초구에 본사를 두고 있다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:31884205ffd62d74"
+      },
+      "id": "rel:31884205ffd62d74"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "place:seoul",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "서울",
+        "start_char": 175,
+        "end_char": 177,
+        "chunk_id": "chunk:005",
+        "evidence_text": "삼성전자는 서울 서초구에 본사를 두고 있다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:196f67f02dbccbd1"
+      },
+      "id": "rel:196f67f02dbccbd1"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "place:seoul",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "서초구",
+        "start_char": 178,
+        "end_char": 181,
+        "chunk_id": "chunk:005",
+        "evidence_text": "삼성전자는 서울 서초구에 본사를 두고 있다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:196f67f02dbccbd1"
+      },
+      "id": "rel:196f67f02dbccbd1"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "org:samsung-electronics",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "삼성전자",
+        "start_char": 194,
+        "end_char": 198,
+        "chunk_id": "chunk:006",
+        "evidence_text": "삼성전자는 SK하이닉스와 메모리 공급망 협력을 확대한다고 밝혔다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:21ebb2538b735b64"
+      },
+      "id": "rel:21ebb2538b735b64"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "org:sk-hynix",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "SK하이닉스",
+        "start_char": 200,
+        "end_char": 206,
+        "chunk_id": "chunk:006",
+        "evidence_text": "삼성전자는 SK하이닉스와 메모리 공급망 협력을 확대한다고 밝혔다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:cc7be7af4d363bd7"
+      },
+      "id": "rel:cc7be7af4d363bd7"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "org:samsung-electronics",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "삼성전자",
+        "start_char": 237,
+        "end_char": 241,
+        "chunk_id": "chunk:007",
+        "evidence_text": "발표 이후 삼성전자 주가는 3.2% 상승했고, 시장 분석가 김민수는 삼성전자의 수요 회복을 언급했다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:fc4ebd87f9db21bf"
+      },
+      "id": "rel:fc4ebd87f9db21bf"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "person:kim-minsu",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "시장 분석가 김민수",
+        "start_char": 257,
+        "end_char": 267,
+        "chunk_id": "chunk:007",
+        "evidence_text": "발표 이후 삼성전자 주가는 3.2% 상승했고, 시장 분석가 김민수는 삼성전자의 수요 회복을 언급했다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:f6f83834474caa77"
+      },
+      "id": "rel:f6f83834474caa77"
+    },
+    {
+      "source": "article:3a8a943b5b939909",
+      "target": "org:samsung-electronics",
+      "type": "MENTIONS",
+      "properties": {
+        "mention_text": "삼성전자",
+        "start_char": 269,
+        "end_char": 273,
+        "chunk_id": "chunk:007",
+        "evidence_text": "발표 이후 삼성전자 주가는 3.2% 상승했고, 시장 분석가 김민수는 삼성전자의 수요 회복을 언급했다.",
+        "confidence": 0.95,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:fc4ebd87f9db21bf"
+      },
+      "id": "rel:fc4ebd87f9db21bf"
+    },
+    {
+      "source": "org:samsung-electronics",
+      "target": "product:exynos-ai",
+      "type": "ANNOUNCED",
+      "properties": {
+        "article_id": "article:3a8a943b5b939909",
+        "chunk_id": "chunk:001",
+        "evidence_text": "2026년 6월 20일 서울에서 삼성전자는 차세대 AI 반도체 Exynos AI를 발표했다.",
+        "confidence": 0.85,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:e143aa34f53882c4"
+      },
+      "id": "rel:e143aa34f53882c4"
+    },
+    {
+      "source": "org:samsung-electronics",
+      "target": "place:seoul",
+      "type": "LOCATED_IN",
+      "properties": {
+        "article_id": "article:3a8a943b5b939909",
+        "chunk_id": "chunk:005",
+        "evidence_text": "삼성전자는 서울 서초구에 본사를 두고 있다.",
+        "confidence": 0.85,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:27485b104b3ce795"
+      },
+      "id": "rel:27485b104b3ce795"
+    },
+    {
+      "source": "org:samsung-electronics",
+      "target": "org:sk-hynix",
+      "type": "PARTNERED_WITH",
+      "properties": {
+        "article_id": "article:3a8a943b5b939909",
+        "chunk_id": "chunk:006",
+        "evidence_text": "삼성전자는 SK하이닉스와 메모리 공급망 협력을 확대한다고 밝혔다.",
+        "confidence": 0.85,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:cd23273aa42d6dca"
+      },
+      "id": "rel:cd23273aa42d6dca"
+    },
+    {
+      "source": "org:samsung-electronics",
+      "target": "person:kim-minsu",
+      "type": "ANALYZED_BY",
+      "properties": {
+        "article_id": "article:3a8a943b5b939909",
+        "chunk_id": "chunk:007",
+        "evidence_text": "발표 이후 삼성전자 주가는 3.2% 상승했고, 시장 분석가 김민수는 삼성전자의 수요 회복을 언급했다.",
+        "confidence": 0.85,
+        "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+        "source_url": "https://example.com/news/samsung-ai-chip",
+        "id": "rel:e3184049ab52aa16"
+      },
+      "id": "rel:e3184049ab52aa16"
+    }
+  ],
+  "attributes": [
+    {
+      "target_id": "article:3a8a943b5b939909",
+      "target_type": "NewsArticle",
+      "attribute_name": "mentioned_date",
+      "value": "2026년 6월 20일",
+      "value_text": "2026년 6월 20일",
+      "value_type": "date",
+      "evidence_text": "2026년 6월 20일 서울에서 삼성전자는 차세대 AI 반도체 Exynos AI를 발표했다.",
+      "chunk_id": "chunk:001",
+      "confidence": 0.9
+    },
+    {
+      "target_id": "product:exynos-ai",
+      "target_type": "Product",
+      "attribute_name": "product_category",
+      "value": "AI semiconductor",
+      "value_text": "AI 반도체",
+      "value_type": "string",
+      "evidence_text": "2026년 6월 20일 서울에서 삼성전자는 차세대 AI 반도체 Exynos AI를 발표했다.",
+      "chunk_id": "chunk:001",
+      "confidence": 0.9
+    },
+    {
+      "target_id": "org:samsung-electronics",
+      "target_type": "Organization",
+      "attribute_name": "market_cap_trillion_krw",
+      "value": 430.0,
+      "value_text": "430조 원",
+      "value_type": "number",
+      "evidence_text": "삼성전자의 시가총액은 430조 원이며 SK하이닉스의 시가총액은 190조 원이다.",
+      "chunk_id": "chunk:003",
+      "confidence": 0.9
+    },
+    {
+      "target_id": "org:sk-hynix",
+      "target_type": "Organization",
+      "attribute_name": "market_cap_trillion_krw",
+      "value": 190.0,
+      "value_text": "190조 원",
+      "value_type": "number",
+      "evidence_text": "삼성전자의 시가총액은 430조 원이며 SK하이닉스의 시가총액은 190조 원이다.",
+      "chunk_id": "chunk:003",
+      "confidence": 0.9
+    },
+    {
+      "target_id": "org:samsung-electronics",
+      "target_type": "Organization",
+      "attribute_name": "revenue_target_trillion_krw",
+      "value": 25.0,
+      "value_text": "25조 원",
+      "value_type": "number",
+      "evidence_text": "삼성전자는 2026년 AI 반도체 매출 목표를 25조 원으로 제시했다.",
+      "chunk_id": "chunk:004",
+      "confidence": 0.9
+    },
+    {
+      "target_id": "org:samsung-electronics",
+      "target_type": "Organization",
+      "attribute_name": "stock_change_percent",
+      "value": 3.2,
+      "value_text": "3.2% 상승",
+      "value_type": "number",
+      "evidence_text": "발표 이후 삼성전자 주가는 3.2% 상승했고, 시장 분석가 김민수는 삼성전자의 수요 회복을 언급했다.",
+      "chunk_id": "chunk:007",
+      "confidence": 0.9
+    },
+    {
+      "target_id": "person:kim-minsu",
+      "target_type": "Person",
+      "attribute_name": "role",
+      "value": "market_analyst",
+      "value_text": "시장 분석가",
+      "value_type": "string",
+      "evidence_text": "발표 이후 삼성전자 주가는 3.2% 상승했고, 시장 분석가 김민수는 삼성전자의 수요 회복을 언급했다.",
+      "chunk_id": "chunk:007",
+      "confidence": 0.9
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "error_count": 0,
+    "errors": [],
+    "counts": {
+      "unique_entities": 5,
+      "entity_mentions": 16,
+      "relations": 4,
+      "attributes": 7
+    }
+  },
+  "cypher": {
+    "queries": [
+      {
+        "name": "upsert_node_article:3a8a943b5b939909",
+        "cypher": "MERGE (n:`NewsArticle` {id: $id})\nSET n += $properties",
+        "parameters": {
+          "id": "article:3a8a943b5b939909",
+          "properties": {
+            "id": "article:3a8a943b5b939909",
+            "headline": "삼성전자, 서울에서 차세대 AI 반도체 발표",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "published_at": "2026-06-20T09:00:00+09:00",
+            "checksum": "3a8a943b5b939909",
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "mentioned_date": "2026년 6월 20일"
+          }
+        }
+      },
+      {
+        "name": "upsert_node_place:seoul",
+        "cypher": "MERGE (n:`Place` {id: $id})\nSET n += $properties",
+        "parameters": {
+          "id": "place:seoul",
+          "properties": {
+            "id": "place:seoul",
+            "name": "서울",
+            "entity_type": "Place"
+          }
+        }
+      },
+      {
+        "name": "upsert_node_org:samsung-electronics",
+        "cypher": "MERGE (n:`Organization` {id: $id})\nSET n += $properties",
+        "parameters": {
+          "id": "org:samsung-electronics",
+          "properties": {
+            "id": "org:samsung-electronics",
+            "name": "삼성전자",
+            "entity_type": "Organization",
+            "market_cap_trillion_krw": 430.0,
+            "revenue_target_trillion_krw": 25.0,
+            "stock_change_percent": 3.2
+          }
+        }
+      },
+      {
+        "name": "upsert_node_product:exynos-ai",
+        "cypher": "MERGE (n:`Product` {id: $id})\nSET n += $properties",
+        "parameters": {
+          "id": "product:exynos-ai",
+          "properties": {
+            "id": "product:exynos-ai",
+            "name": "Exynos AI",
+            "entity_type": "Product",
+            "product_category": "AI semiconductor"
+          }
+        }
+      },
+      {
+        "name": "upsert_node_org:sk-hynix",
+        "cypher": "MERGE (n:`Organization` {id: $id})\nSET n += $properties",
+        "parameters": {
+          "id": "org:sk-hynix",
+          "properties": {
+            "id": "org:sk-hynix",
+            "name": "SK하이닉스",
+            "entity_type": "Organization",
+            "market_cap_trillion_krw": 190.0
+          }
+        }
+      },
+      {
+        "name": "upsert_node_person:kim-minsu",
+        "cypher": "MERGE (n:`Person` {id: $id})\nSET n += $properties",
+        "parameters": {
+          "id": "person:kim-minsu",
+          "properties": {
+            "id": "person:kim-minsu",
+            "name": "김민수",
+            "entity_type": "Person",
+            "role": "market_analyst"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:76611f96aea566da",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "place:seoul",
+          "id": "rel:76611f96aea566da",
+          "properties": {
+            "mention_text": "서울",
+            "start_char": 13,
+            "end_char": 15,
+            "chunk_id": "chunk:001",
+            "evidence_text": "2026년 6월 20일 서울에서 삼성전자는 차세대 AI 반도체 Exynos AI를 발표했다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:76611f96aea566da"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:b3b9b7460327c0d8",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "org:samsung-electronics",
+          "id": "rel:b3b9b7460327c0d8",
+          "properties": {
+            "mention_text": "삼성전자",
+            "start_char": 18,
+            "end_char": 22,
+            "chunk_id": "chunk:001",
+            "evidence_text": "2026년 6월 20일 서울에서 삼성전자는 차세대 AI 반도체 Exynos AI를 발표했다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:b3b9b7460327c0d8"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:4fdf6fbb2b7ecba4",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "product:exynos-ai",
+          "id": "rel:4fdf6fbb2b7ecba4",
+          "properties": {
+            "mention_text": "차세대 AI 반도체",
+            "start_char": 24,
+            "end_char": 34,
+            "chunk_id": "chunk:001",
+            "evidence_text": "2026년 6월 20일 서울에서 삼성전자는 차세대 AI 반도체 Exynos AI를 발표했다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:4fdf6fbb2b7ecba4"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:4fdf6fbb2b7ecba4",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "product:exynos-ai",
+          "id": "rel:4fdf6fbb2b7ecba4",
+          "properties": {
+            "mention_text": "Exynos AI",
+            "start_char": 35,
+            "end_char": 44,
+            "chunk_id": "chunk:001",
+            "evidence_text": "2026년 6월 20일 서울에서 삼성전자는 차세대 AI 반도체 Exynos AI를 발표했다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:4fdf6fbb2b7ecba4"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:466b6aea5f5c6927",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "product:exynos-ai",
+          "id": "rel:466b6aea5f5c6927",
+          "properties": {
+            "mention_text": "Exynos AI",
+            "start_char": 51,
+            "end_char": 60,
+            "chunk_id": "chunk:002",
+            "evidence_text": "Exynos AI는 모바일 AI 반도체 제품으로 소개됐다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:466b6aea5f5c6927"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:1e18f8f231200920",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "org:samsung-electronics",
+          "id": "rel:1e18f8f231200920",
+          "properties": {
+            "mention_text": "삼성전자",
+            "start_char": 84,
+            "end_char": 88,
+            "chunk_id": "chunk:003",
+            "evidence_text": "삼성전자의 시가총액은 430조 원이며 SK하이닉스의 시가총액은 190조 원이다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:1e18f8f231200920"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:3cbf6a8e3cab22a7",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "org:sk-hynix",
+          "id": "rel:3cbf6a8e3cab22a7",
+          "properties": {
+            "mention_text": "SK하이닉스",
+            "start_char": 105,
+            "end_char": 111,
+            "chunk_id": "chunk:003",
+            "evidence_text": "삼성전자의 시가총액은 430조 원이며 SK하이닉스의 시가총액은 190조 원이다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:3cbf6a8e3cab22a7"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:ea8f95c5f9554b1d",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "org:samsung-electronics",
+          "id": "rel:ea8f95c5f9554b1d",
+          "properties": {
+            "mention_text": "삼성전자",
+            "start_char": 129,
+            "end_char": 133,
+            "chunk_id": "chunk:004",
+            "evidence_text": "삼성전자는 2026년 AI 반도체 매출 목표를 25조 원으로 제시했다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:ea8f95c5f9554b1d"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:31884205ffd62d74",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "org:samsung-electronics",
+          "id": "rel:31884205ffd62d74",
+          "properties": {
+            "mention_text": "삼성전자",
+            "start_char": 169,
+            "end_char": 173,
+            "chunk_id": "chunk:005",
+            "evidence_text": "삼성전자는 서울 서초구에 본사를 두고 있다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:31884205ffd62d74"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:196f67f02dbccbd1",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "place:seoul",
+          "id": "rel:196f67f02dbccbd1",
+          "properties": {
+            "mention_text": "서울",
+            "start_char": 175,
+            "end_char": 177,
+            "chunk_id": "chunk:005",
+            "evidence_text": "삼성전자는 서울 서초구에 본사를 두고 있다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:196f67f02dbccbd1"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:196f67f02dbccbd1",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "place:seoul",
+          "id": "rel:196f67f02dbccbd1",
+          "properties": {
+            "mention_text": "서초구",
+            "start_char": 178,
+            "end_char": 181,
+            "chunk_id": "chunk:005",
+            "evidence_text": "삼성전자는 서울 서초구에 본사를 두고 있다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:196f67f02dbccbd1"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:21ebb2538b735b64",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "org:samsung-electronics",
+          "id": "rel:21ebb2538b735b64",
+          "properties": {
+            "mention_text": "삼성전자",
+            "start_char": 194,
+            "end_char": 198,
+            "chunk_id": "chunk:006",
+            "evidence_text": "삼성전자는 SK하이닉스와 메모리 공급망 협력을 확대한다고 밝혔다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:21ebb2538b735b64"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:cc7be7af4d363bd7",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "org:sk-hynix",
+          "id": "rel:cc7be7af4d363bd7",
+          "properties": {
+            "mention_text": "SK하이닉스",
+            "start_char": 200,
+            "end_char": 206,
+            "chunk_id": "chunk:006",
+            "evidence_text": "삼성전자는 SK하이닉스와 메모리 공급망 협력을 확대한다고 밝혔다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:cc7be7af4d363bd7"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:fc4ebd87f9db21bf",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "org:samsung-electronics",
+          "id": "rel:fc4ebd87f9db21bf",
+          "properties": {
+            "mention_text": "삼성전자",
+            "start_char": 237,
+            "end_char": 241,
+            "chunk_id": "chunk:007",
+            "evidence_text": "발표 이후 삼성전자 주가는 3.2% 상승했고, 시장 분석가 김민수는 삼성전자의 수요 회복을 언급했다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:fc4ebd87f9db21bf"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:f6f83834474caa77",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "person:kim-minsu",
+          "id": "rel:f6f83834474caa77",
+          "properties": {
+            "mention_text": "시장 분석가 김민수",
+            "start_char": 257,
+            "end_char": 267,
+            "chunk_id": "chunk:007",
+            "evidence_text": "발표 이후 삼성전자 주가는 3.2% 상승했고, 시장 분석가 김민수는 삼성전자의 수요 회복을 언급했다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:f6f83834474caa77"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:fc4ebd87f9db21bf",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`MENTIONS` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "article:3a8a943b5b939909",
+          "target_id": "org:samsung-electronics",
+          "id": "rel:fc4ebd87f9db21bf",
+          "properties": {
+            "mention_text": "삼성전자",
+            "start_char": 269,
+            "end_char": 273,
+            "chunk_id": "chunk:007",
+            "evidence_text": "발표 이후 삼성전자 주가는 3.2% 상승했고, 시장 분석가 김민수는 삼성전자의 수요 회복을 언급했다.",
+            "confidence": 0.95,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:fc4ebd87f9db21bf"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:e143aa34f53882c4",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`ANNOUNCED` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "org:samsung-electronics",
+          "target_id": "product:exynos-ai",
+          "id": "rel:e143aa34f53882c4",
+          "properties": {
+            "article_id": "article:3a8a943b5b939909",
+            "chunk_id": "chunk:001",
+            "evidence_text": "2026년 6월 20일 서울에서 삼성전자는 차세대 AI 반도체 Exynos AI를 발표했다.",
+            "confidence": 0.85,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:e143aa34f53882c4"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:27485b104b3ce795",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`LOCATED_IN` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "org:samsung-electronics",
+          "target_id": "place:seoul",
+          "id": "rel:27485b104b3ce795",
+          "properties": {
+            "article_id": "article:3a8a943b5b939909",
+            "chunk_id": "chunk:005",
+            "evidence_text": "삼성전자는 서울 서초구에 본사를 두고 있다.",
+            "confidence": 0.85,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:27485b104b3ce795"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:cd23273aa42d6dca",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`PARTNERED_WITH` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "org:samsung-electronics",
+          "target_id": "org:sk-hynix",
+          "id": "rel:cd23273aa42d6dca",
+          "properties": {
+            "article_id": "article:3a8a943b5b939909",
+            "chunk_id": "chunk:006",
+            "evidence_text": "삼성전자는 SK하이닉스와 메모리 공급망 협력을 확대한다고 밝혔다.",
+            "confidence": 0.85,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:cd23273aa42d6dca"
+          }
+        }
+      },
+      {
+        "name": "upsert_relationship_rel:e3184049ab52aa16",
+        "cypher": "MATCH (source {id: $source_id})\nMATCH (target {id: $target_id})\nMERGE (source)-[rel:`ANALYZED_BY` {id: $id}]->(target)\nSET rel += $properties",
+        "parameters": {
+          "source_id": "org:samsung-electronics",
+          "target_id": "person:kim-minsu",
+          "id": "rel:e3184049ab52aa16",
+          "properties": {
+            "article_id": "article:3a8a943b5b939909",
+            "chunk_id": "chunk:007",
+            "evidence_text": "발표 이후 삼성전자 주가는 3.2% 상승했고, 시장 분석가 김민수는 삼성전자의 수요 회복을 언급했다.",
+            "confidence": 0.85,
+            "trace_id": "baseline:3a8a943b5b939909:20260628T045215Z",
+            "source_url": "https://example.com/news/samsung-ai-chip",
+            "id": "rel:e3184049ab52aa16"
+          }
+        }
+      }
+    ],
+    "validation": {
+      "passed": true,
+      "error_count": 0,
+      "errors": [],
+      "query_count": 26
+    }
+  }
+}

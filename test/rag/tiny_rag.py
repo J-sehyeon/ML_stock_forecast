@@ -14,7 +14,7 @@ word_encoder = KeyedVectors.load("test/rag/word_encoder.kv")
 # getting the embedding for a word
 apple_v = word_encoder['apple']
 
-print(apple_v)
+print('apple의 벡터:\n', apple_v)
 
 # defining a function for embedding an entire document to a single mean vector
 def embed_sequence(sequence):
@@ -22,7 +22,7 @@ def embed_sequence(sequence):
     return np.mean(vects, axis=0)
 
 seq = embed_sequence('its a sunny day today')
-print(seq)
+print('its a sunny day today: \n', seq)
 
 # Calculating distance between two embedding vectors uses manhattan distance
 def calc_distance(emb1, emb2):
@@ -92,17 +92,17 @@ print(f'prompt for "{prompt}":\n')
 print(retreive_and_augment(prompt))
 
 
-# Using RAG with OpenAI's gpt model
-from openai import OpenAI
-model = OpenAI()
-prompts = ['what pasta dishes do you have', 'what events do you guys do', 'oh cool what is karaoke']
+# # Using RAG with OpenAI's gpt model
+# from openai import OpenAI
+# model = OpenAI()
+# prompts = ['what pasta dishes do you have', 'what events do you guys do', 'oh cool what is karaoke']
 
-for prompt in prompts:
-    ra_prompt = retreive_and_augment(prompt)
-    response = model.responses.create(
-        model='gpt-5-nano',
-        input=ra_prompt,
-    ).output_text
+# for prompt in prompts:
+#     ra_prompt = retreive_and_augment(prompt)
+#     response = model.responses.create(
+#         model='gpt-5-nano',
+#         input=ra_prompt,
+#     ).output_text
 
-    print(f'prompt: "{prompt}"')
-    print(f'response: {response}')
+#     print(f'prompt: "{prompt}"')
+#     print(f'response: {response}')
