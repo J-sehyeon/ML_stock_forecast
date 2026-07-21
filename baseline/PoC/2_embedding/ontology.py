@@ -1,6 +1,88 @@
-from pydantic import BaseModel, Field
-from typing import Any, Dict, List, Optional
+from pydantic import BaseModel, ConfigDict, Field
+from typing import Any, Dict, List, Optional, Annotated
+from enum import Enum
 
+from datetime import datetime
+
+# 부모 모델 설정
+# 객체, 관게 등이 아래의 모델을 상속받아 공통 규제가 적용될 것이다.
+class StrictModel(BaseModel):
+    model_config = ConfigDict(
+        extra='forbid',
+        str_to_lower=True,
+        str_strip_whitespace=True,
+    )
+
+# 객체 목록 정의
+class EntityType(str, Enum):
+    Company = "Company"
+    Person = "Person"
+    Government = "Government"
+    Industry = "Industry"
+    Consumer = "Consumer"
+    Event = "Event"
+    
+    # hyperentity: 많은 객체에 연결 될 수 있고 이를 여러 객체의 속성으로 넣을 수 있는?
+    Money = "Money"
+
+    # subentity
+    Product = "Product"
+    Policy = "Policy"
+
+# 객체의 속성 타입 정의
+class CountryType(str, Enum):
+    KOREA = "KOREA"
+    USA = "USA"
+
+
+
+# 모든 객체와 연결 될 메타 속성: 돈, 환율, 지수
+class Money(BaseModel):
+    time : datetime
+    FXRate : int
+
+
+# 객체 정의
+class Company(StrictModel):
+    pass
+
+class Government(StrictModel):
+    name : CountryType
+    power : float = Field(description="국가의 힘")
+    gdp : int = Field(description="dollar")
+
+class Person(StrictModel):
+    name : str = Field(description="인물의 이름")
+
+
+## 소비자의 경우 전체적인 관점에서 속성을 정의한다.
+class Consumer(StrictModel):
+    country : CountryType
+    spending_power : int = Field(ge=0, le=1, description="소비자의 소비력")
+
+
+# 여러 객체를 하나로 묶는 객체의 필요 -> 속성으로 대체? 소비자들의 소비력, 경제 상황, 국가 등
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ai
 
 class Company(BaseModel):
     id: int | str = Field(description="그 회사의 종목 코드를 그대로 사용한다.")
